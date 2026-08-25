@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheima Mezdour — Data &amp; AI Engineer</title>
+<meta name="description" content="Portfolio of Cheima Mezdour, Big Data Consultant & AI/Data Science graduate — data pipelines, machine learning, and reinforcement learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0A0C10;
+    --panel: #12161D;
+    --panel-2: #161B23;
+    --border: #232935;
+    --text: #E7EAF0;
+    --text-dim: #8B93A1;
+    --accent: #D9A441;
+    --accent-dim: #8A6B2E;
+    --accent-2: #3FB8AF;
+    --radius: 10px;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  ul{ list-style: none; }
+  img{ max-width: 100%; display: block; }
+  ::selection{ background: var(--accent); color: #0A0C10; }
+  :focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap{ max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before{
+    content: "";
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(10px);
+    background: rgba(10,12,16,0.75);
+    border-bottom: 1px solid var(--border);
+  }
+  nav.wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .logo{
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo .bracket{ color: var(--accent); }
+  .nav-links{
+    display: flex;
+    gap: 28px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .nav-links a{ transition: color .15s ease; }
+  .nav-links a:hover{ color: var(--accent); }
+  .nav-cta{
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 9px 16px;
+    border: 1px solid var(--accent-dim);
+    border-radius: 6px;
+    color: var(--accent);
+    transition: background .15s ease, color .15s ease;
+    white-space: nowrap;
+  }
+  .nav-cta:hover{ background: var(--accent); color: #0A0C10; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    z-index: 1;
+    padding: 96px 0 80px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .hero h1{
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(38px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 .role{
+    display: block;
+    color: var(--accent);
+    font-size: 0.5em;
+    font-family: var(--mono);
+    font-weight: 500;
+    margin-top: 14px;
+    letter-spacing: 0;
+  }
+  .hero-sub{
+    margin-top: 22px;
+    max-width: 50ch;
+    color: var(--text-dim);
+    font-size: 16.5px;
+  }
+  .hero-actions{
+    margin-top: 34px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    font-family: var(--mono);
+    font-size: 14px;
+    padding: 13px 22px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn-primary{ background: var(--accent); color: #0A0C10; font-weight: 600; }
+  .btn-primary:hover{ transform: translateY(-1px); background: #e8b455; }
+  .btn-ghost{ border-color: var(--border); color: var(--text); }
+  .btn-ghost:hover{ border-color: var(--accent-dim); transform: translateY(-1px); }
+
+  .hero-stats{ margin-top: 44px; display: flex; gap: 36px; flex-wrap: wrap; }
+  .hero-stats div{ font-family: var(--mono); }
+  .hero-stats .num{ font-size: 20px; color: var(--text); font-weight: 600; }
+  .hero-stats .label{ font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+
+  /* pipeline diagram */
+  .pipeline{
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 20px;
+  }
+  .pipeline-header{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+  .pipeline-header .dots{ display: flex; gap: 6px; }
+  .pipeline-header .dots span{ width: 9px; height: 9px; border-radius: 50%; background: var(--border); }
+  .pipeline svg{ width: 100%; height: auto; display: block; }
+  .node-label{ font-family: var(--mono); font-size: 10.5px; fill: var(--text-dim); }
+  .node-box{ fill: var(--panel-2); stroke: var(--border); stroke-width: 1; }
+  .node-box.active{ stroke: var(--accent); }
+  .flow-line{ fill: none; stroke: var(--border); stroke-width: 1.5; }
+  .flow-dash{
+    fill: none;
+    stroke: var(--accent-2);
+    stroke-width: 2;
+    stroke-dasharray: 6 10;
+    animation: flow 1.6s linear infinite;
+  }
+  @keyframes flow{ to{ stroke-dashoffset: -32; } }
+  .pulse{ fill: var(--accent); animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse{
+    0%, 100%{ opacity: .35; r: 3; }
+    50%{ opacity: 1; r: 4.5; }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ position: relative; z-index: 1; padding: 84px 0; border-top: 1px solid var(--border); }
+  .section-head{ margin-bottom: 44px; }
+  .section-head h2{ font-family: var(--display); font-size: clamp(26px, 3vw, 34px); font-weight: 600; }
+  .section-head p{ color: var(--text-dim); margin-top: 10px; max-width: 62ch; }
+  .reveal{ opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity: 1; transform: translateY(0); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
+  .about-grid p{ color: var(--text-dim); margin-bottom: 16px; }
+  .about-grid p strong{ color: var(--text); font-weight: 600; }
+  .about-side{ background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .about-side dt{ font-family: var(--mono); font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em; }
+  .about-side dd{ font-size: 14.5px; margin: 4px 0 18px; }
+  .about-side dd:last-child{ margin-bottom: 0; }
+  .about-side dd a:hover{ color: var(--accent); }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .skill-card{ background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+  .skill-card h3{ font-family: var(--mono); font-size: 12px; color: var(--accent-2); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 16px; }
+  .tag-row{ display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag{ font-family: var(--mono); font-size: 12px; padding: 5px 10px; border: 1px solid var(--border); border-radius: 5px; color: var(--text-dim); background: var(--panel-2); }
+
+  /* ---------- TIMELINE (experience + education) ---------- */
+  .timeline{ position: relative; padding-left: 28px; }
+  .timeline::before{ content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 1px; background: var(--border); }
+  .tl-item{ position: relative; padding-bottom: 40px; }
+  .tl-item:last-child{ padding-bottom: 0; }
+  .tl-item::before{
+    content: "";
+    position: absolute;
+    left: -28px; top: 4px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .tl-date{ font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 6px; display: block; }
+  .tl-item h3{ font-family: var(--display); font-size: 19px; font-weight: 600; }
+  .tl-item .co{ color: var(--text-dim); font-size: 14px; margin-top: 2px; }
+  .tl-item p{ color: var(--text-dim); margin-top: 10px; max-width: 64ch; font-size: 14.5px; }
+  .tl-item ul.highlights{ margin-top: 10px; padding-left: 18px; }
+  .tl-item ul.highlights li{ color: var(--text-dim); font-size: 14.5px; margin-bottom: 6px; list-style: disc; }
+  .tl-item .tag-row{ margin-top: 12px; }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .project-card{ background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; transition: border-color .15s ease, transform .15s ease; }
+  .project-card:hover{ border-color: var(--accent-dim); transform: translateY(-2px); }
+  .project-top{ display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; gap: 12px; }
+  .project-card h3{ font-family: var(--display); font-size: 19px; font-weight: 600; }
+  .project-meta{ font-family: var(--mono); font-size: 11.5px; color: var(--accent-2); text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+  .project-card p{ color: var(--text-dim); font-size: 14.5px; margin: 12px 0 14px; }
+  .project-card ul.highlights{ padding-left: 18px; margin-bottom: 16px; }
+  .project-card ul.highlights li{ color: var(--text-dim); font-size: 13.5px; margin-bottom: 5px; list-style: disc; }
+
+  /* ---------- LANGUAGES ---------- */
+  .lang-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .lang-card{ background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+  .lang-card .lang-name{ font-family: var(--display); font-size: 17px; font-weight: 600; }
+  .lang-card .lang-level{ font-family: var(--mono); font-size: 12px; color: var(--accent); margin-top: 6px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-box{ background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 56px; text-align: center; }
+  .contact-box h2{ font-family: var(--display); font-size: clamp(26px, 4vw, 38px); font-weight: 700; }
+  .contact-box p{ color: var(--text-dim); margin: 14px auto 30px; max-width: 52ch; }
+  .contact-links{ display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+  footer{
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-dim);
+    position: relative; z-index: 1;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .nav-links{ display: none; }
+    .hero{ grid-template-columns: 1fr; padding-top: 56px; }
+    .about-grid{ grid-template-columns: 1fr; }
+    .skills-grid{ grid-template-columns: repeat(2, 1fr); }
+    .projects-grid{ grid-template-columns: 1fr; }
+    .lang-grid{ grid-template-columns: repeat(2, 1fr); }
+    .hero-stats{ row-gap: 20px; }
+    .contact-box{ padding: 36px 22px; }
+  }
+  @media (max-width: 480px){
+    .skills-grid{ grid-template-columns: 1fr; }
+    .lang-grid{ grid-template-columns: 1fr; }
+    .wrap{ padding: 0 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo"><span class="bracket">&gt;</span>cheima_mezdour</a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#projects">highlights</a></li>
+      <li><a href="#education">education</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">let's talk</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero wrap" style="border-top:none; padding-top:96px;">
+    <div>
+      <div class="eyebrow">$ whoami</div>
+      <h1>
+        Cheima Mezdour
+        <span class="role" id="roleText">Big Data Consultant</span>
+      </h1>
+      <p class="hero-sub">
+        AI and Data Science graduate building ETL pipelines, big data systems, and
+        machine learning solutions — currently working across Python, PySpark, and
+        Apache Iceberg to keep data reliable, from ingestion to insight.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View work →</a>
+        <a href="resume.pdf" class="btn btn-ghost">Download résumé</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="num">4</div>
+          <div class="label">roles in data &amp; AI since 2022</div>
+        </div>
+        <div>
+          <div class="num">MSc</div>
+          <div class="label">AI &amp; Data Science, ESTIN</div>
+        </div>
+        <div>
+          <div class="num">4</div>
+          <div class="label">spoken languages</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline" aria-hidden="true">
+      <div class="pipeline-header">
+        <span>pipeline.yaml</span>
+        <span class="dots"><span></span><span></span><span></span></span>
+      </div>
+      <svg viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="16" width="100" height="44" rx="6" class="node-box active"/>
+        <text x="60" y="43" text-anchor="middle" class="node-label">RAW DATA</text>
+
+        <rect x="180" y="16" width="100" height="44" rx="6" class="node-box"/>
+        <text x="230" y="43" text-anchor="middle" class="node-label">PYSPARK ETL</text>
+
+        <rect x="350" y="16" width="100" height="44" rx="6" class="node-box"/>
+        <text x="400" y="43" text-anchor="middle" class="node-label">ICEBERG</text>
+
+        <rect x="180" y="110" width="100" height="44" rx="6" class="node-box"/>
+        <text x="230" y="137" text-anchor="middle" class="node-label">PREFECT</text>
+
+        <rect x="350" y="110" width="100" height="44" rx="6" class="node-box"/>
+        <text x="400" y="137" text-anchor="middle" class="node-label">ML MODEL</text>
+
+        <rect x="180" y="204" width="100" height="44" rx="6" class="node-box"/>
+        <text x="230" y="231" text-anchor="middle" class="node-label">DASHBOARD</text>
+
+        <path class="flow-line" d="M110 38 H180"/>
+        <path class="flow-dash" d="M110 38 H180"/>
+
+        <path class="flow-line" d="M280 38 H350"/>
+        <path class="flow-dash" d="M280 38 H350"/>
+
+        <path class="flow-line" d="M230 60 V110"/>
+        <path class="flow-dash" d="M230 60 V110"/>
+
+        <path class="flow-line" d="M280 132 H350"/>
+        <path class="flow-dash" d="M280 132 H350"/>
+
+        <path class="flow-line" d="M230 154 V204"/>
+        <path class="flow-dash" d="M230 154 V204"/>
+
+        <circle cx="145" cy="38" r="3.5" class="pulse"/>
+        <circle cx="230" cy="85" r="3.5" class="pulse"/>
+        <circle cx="230" cy="180" r="3.5" class="pulse"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div class="eyebrow">01 · about</div>
+        <h2>Data, end to end</h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>
+            I'm an <strong>AI and Data Science</strong> graduate with a strong foundation
+            in data analytics, big data technologies, and software engineering. I'm
+            skilled in <strong>Python, SQL, and functional programming</strong>, and I
+            enjoy solving complex challenges, optimizing data systems, and bridging
+            technical solutions with business needs.
+          </p>
+          <p>
+            I thrive in dynamic environments, value collaboration, and I'm eager to
+            keep learning and adapting to new technologies to drive impactful
+            solutions — whether that's a production ETL pipeline, a research project
+            in reinforcement learning, or a machine learning model that has to hold
+            up outside a notebook.
+          </p>
+        </div>
+        <dl class="about-side">
+          <dt>Based in</dt>
+          <dd>Skikda, Algeria</dd>
+          <dt>Currently</dt>
+          <dd>Big Data Consultant @ Seamless Distributed Systems (remote, Sweden)</dd>
+          <dt>Focus</dt>
+          <dd>ETL &amp; data pipelines, big data, applied ML &amp; reinforcement learning</dd>
+          <dt>Core stack</dt>
+          <dd>Python · SQL · PySpark · Prefect · Apache Iceberg · Docker</dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:c_mezdour@estin.dz">c_mezdour@estin.dz</a></dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:+213542863684">+213 542 863 684</a></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div class="eyebrow">02 · skills</div>
+        <h2>Toolbox</h2>
+        <p>Grouped by where they sit in the pipeline — from raw data to models and dashboards.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Programming &amp; data</h3>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">PySpark</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Data engineering</h3>
+          <div class="tag-row">
+            <span class="tag">ETL</span>
+            <span class="tag">Data Pipelines</span>
+            <span class="tag">Apache Iceberg</span>
+            <span class="tag">Prefect</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Data science &amp; AI</h3>
+          <div class="tag-row">
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Reinforcement Learning</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Infra &amp; tools</h3>
+          <div class="tag-row">
+            <span class="tag">Docker</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Keycloak</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div class="eyebrow">03 · experience</div>
+        <h2>Where I've worked</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-date">May 2025 — Present</span>
+          <h3>Big Data Consultant</h3>
+          <div class="co">Seamless Distributed Systems — Sweden, Remote</div>
+          <ul class="highlights">
+            <li>Deploy, configure, and continuously improve data and analytics solutions across customer environments.</li>
+            <li>Design, develop, and maintain ETL and data integration pipelines using Python, PySpark, Prefect, and Apache Iceberg.</li>
+            <li>Monitor and troubleshoot data pipelines and workflows, performing root-cause analysis and resolving production issues.</li>
+            <li>Perform data exploration, validation, and analysis in Jupyter Notebooks to identify anomalies and operational insights.</li>
+            <li>Manage and support Docker environments, including deployments, configurations, and production operations.</li>
+            <li>Collaborate with customers, product, engineering, and support teams to gather requirements and improve data solutions.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">PySpark</span><span class="tag">Prefect</span><span class="tag">Apache Iceberg</span><span class="tag">Docker</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">Apr 2024 — Sep 2024</span>
+          <h3>Reinforcement Learning Research Intern</h3>
+          <div class="co">Grettia, Gustave Eiffel University — Paris, France</div>
+          <ul class="highlights">
+            <li>Led a project to optimize traffic management using reinforcement learning.</li>
+            <li>Conducted extensive literature reviews to identify research gaps.</li>
+            <li>Simulated traffic scenarios using the Simulation of Urban Mobility (SUMO) tool.</li>
+            <li>Analyzed traffic metrics and penalized collisions for realistic simulations.</li>
+            <li>Achieved improvements in traffic flow and congestion reduction with autonomous vehicles.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Reinforcement Learning</span><span class="tag">SUMO</span><span class="tag">Python</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">Jun 2023 — Oct 2023</span>
+          <h3>Software Engineer Intern</h3>
+          <div class="co">Fentech.ai — Algiers, Algeria</div>
+          <ul class="highlights">
+            <li>Designed and implemented a tailored database system for the Algerian Cinema Digital Archives, using Python and Django.</li>
+            <li>Developed robust unit tests to ensure reliability, following industry best practices.</li>
+            <li>Dockerized the backend for optimized deployment.</li>
+            <li>Integrated a chatbot into the web interface, enhancing user engagement.</li>
+            <li>Conducted web scraping for data synthesis, enriching project resources.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Docker</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">Oct 2022 — Nov 2022</span>
+          <h3>Machine Learning Engineer Intern</h3>
+          <div class="co">Technocolabs Softwares — Remote</div>
+          <ul class="highlights">
+            <li>Worked on the "Borrowers Credit Risk Modeling" initiative for the Bondora P2P lending platform.</li>
+            <li>Executed data preparation, cleaning, EDA, modeling, and deployment end to end.</li>
+            <li>Conducted thorough exploratory data analysis to extract meaningful insights.</li>
+            <li>Developed robust credit risk models using advanced modeling techniques.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">EDA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT HIGHLIGHTS -->
+  <section id="projects">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div class="eyebrow">04 · highlights</div>
+        <h2>Selected work</h2>
+        <p>A few projects pulled from the roles above — big data, applied ML, and reinforcement learning.</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-top">
+            <h3>ETL &amp; data platform</h3>
+            <span class="project-meta">Seamless Distributed Systems</span>
+          </div>
+          <p>
+            Production ETL and data integration pipelines built on Python, PySpark,
+            Prefect, and Apache Iceberg for customer analytics environments.
+          </p>
+          <ul class="highlights">
+            <li>Root-cause troubleshooting for production pipeline failures.</li>
+            <li>Data validation and anomaly detection via Jupyter Notebooks.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">PySpark</span><span class="tag">Prefect</span><span class="tag">Iceberg</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-top">
+            <h3>Traffic optimization with RL</h3>
+            <span class="project-meta">Gustave Eiffel University</span>
+          </div>
+          <p>
+            Reinforcement learning research project to reduce traffic congestion,
+            simulating urban traffic scenarios and autonomous-vehicle behavior.
+          </p>
+          <ul class="highlights">
+            <li>Built simulations with SUMO to model realistic traffic flow.</li>
+            <li>Penalized collisions in the reward design for safer policies.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Reinforcement Learning</span><span class="tag">SUMO</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-top">
+            <h3>Borrowers credit risk model</h3>
+            <span class="project-meta">Technocolabs / Bondora</span>
+          </div>
+          <p>
+            End-to-end credit risk modeling for a P2P lending platform, from raw
+            borrower data to a deployed risk model.
+          </p>
+          <ul class="highlights">
+            <li>Full pipeline: data cleaning, EDA, modeling, and deployment.</li>
+            <li>Advanced modeling techniques applied to real lending data.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Scikit-learn</span><span class="tag">EDA</span><span class="tag">Python</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-top">
+            <h3>Cinema digital archives</h3>
+            <span class="project-meta">Fentech.ai</span>
+          </div>
+          <p>
+            A tailored, Dockerized database system for the Algerian Cinema Digital
+            Archives, with a chatbot-enabled web interface.
+          </p>
+          <ul class="highlights">
+            <li>Django backend with unit tests following industry best practices.</li>
+            <li>Web scraping pipeline to enrich the archive's dataset.</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Django</span><span class="tag">Docker</span><span class="tag">Python</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div class="eyebrow">05 · education</div>
+        <h2>Academic background</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-date">Sep 2021 — Sep 2024</span>
+          <h3>MSc in Artificial Intelligence and Data Science</h3>
+          <div class="co">École supérieure en Sciences et Technologies de l'Informatique et du Numérique (ESTIN), Algeria</div>
+          <p>Coursework: Deep Learning, Machine Learning, Data Science, Big Data, SQL Databases, Cloud Computing, Networks, Natural Language Processing.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-date">Sep 2019 — Sep 2021</span>
+          <h3>Preparatory Classes</h3>
+          <div class="co">École Nationale Supérieure d'Informatique (Ex. INI), Algeria</div>
+          <p>Coursework: Algorithmics, Algebra, Calculus, Probability and Statistics, Object-Oriented Programming, Mathematical Logic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section id="languages">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div class="eyebrow">06 · languages</div>
+        <h2>Languages</h2>
+      </div>
+      <div class="lang-grid">
+        <div class="lang-card">
+          <div class="lang-name">Arabic</div>
+          <div class="lang-level">C2</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-name">English</div>
+          <div class="lang-level">B2 / C1</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-name">French</div>
+          <div class="lang-level">B2</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-name">German</div>
+          <div class="lang-level">A1.2</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap reveal">
+      <div class="contact-box">
+        <div class="eyebrow" style="justify-content:center;">07 · contact</div>
+        <h2>Let's build something with your data</h2>
+        <p>
+          Open to data engineering, big data, and applied ML opportunities. The
+          fastest way to reach me is email.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:c_mezdour@estin.dz" class="btn btn-primary">c_mezdour@estin.dz</a>
+          <a href="tel:+213542863684" class="btn btn-ghost">+213 542 863 684</a>
+          <a href="https://github.com/mezdourcheima" class="btn btn-ghost">GitHub</a>
+          <a href="https://www.linkedin.com/in/cheima-mezdour-08240a1bb" class="btn btn-ghost">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Cheima Mezdour — Skikda, Algeria.</div>
+</footer>
+
+<script>
+  const roles = ["Big Data Consultant", "Data Scientist", "AI Engineer", "ETL &amp; Pipelines"];
+  const roleEl = document.getElementById('roleText');
+  let ri = 0;
+  if (roleEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setInterval(() => {
+      ri = (ri + 1) % roles.length;
+      roleEl.style.opacity = 0;
+      setTimeout(() => {
+        roleEl.textContent = roles[ri].replace('&amp;', '&');
+        roleEl.style.opacity = 1;
+      }, 220);
+    }, 2600);
+    roleEl.style.transition = 'opacity .22s ease';
+  }
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
